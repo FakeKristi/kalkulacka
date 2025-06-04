@@ -18,7 +18,12 @@ public class Kalkulacka {
 
             if (c == '+' || c == '-' || c == '*' || c == '/') {
 
+
                 if (state.equals("num")) {
+
+                    if (num2.isEmpty())
+                       throw new IllegalArgumentException("non infinix notation");
+
                     if (operation == '+')
                         num1 = String.valueOf(Float.parseFloat(num1) + Float.parseFloat(num2));
                     if (operation == '-')
@@ -32,6 +37,8 @@ public class Kalkulacka {
                     operation = c;
                 }
                 if (state.equals("num1")) {
+                    if (num1.isEmpty())
+                        throw new IllegalArgumentException("non infinix notation");
                     operation = c;
                     state = "num";
                 }

@@ -34,7 +34,14 @@ public class HelloController {
     private void clear(ActionEvent actionEvent) {
         expresion.setText("");
     }
+
     private void eval(ActionEvent actionEvent) {
-         expresion.setText(String.valueOf(Kalkulacka.eval(expresion.getText())));
+        String result = "error";
+        try {
+            result = String.valueOf(Kalkulacka.eval(expresion.getText()));
+        } catch (IllegalArgumentException e) {
+            result = e.getMessage();
+        }
+        expresion.setText(result);
     }
 }
